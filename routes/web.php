@@ -145,3 +145,37 @@ Route::get('/PHP_Superglobals_Regex', function () {
     return view('PHP_Superglobals_Regex');
 });
 
+
+
+
+Route::get('/PHP_A_Simple_HTML_Form', function () {
+    return view('PHP_A_Simple_HTML_Form');
+});
+
+
+
+
+
+Route::get('/php_fourm_validate', function () {
+    return view('php_fourm_validate');
+});
+
+
+
+
+Route::match(['get', 'post'], '/PHP_Required_Fields', function () {
+    return view('PHP_Required_Fields');
+});
+
+
+
+
+
+Route::get('/PHP_fourm__validate_mark2', function () {
+    return view('PHP_fourm__validate_mark2');
+});
+
+
+
+
+
