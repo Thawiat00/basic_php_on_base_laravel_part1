@@ -1,0 +1,12 @@
+ขั้นตอนถัดไปแนะนำ
+
+ทดสอบ server Laravel
+
+php artisan serve
+
+
+แล้วเปิดเบราว์เซอร์:
+
+http://localhost:8000
+
+
