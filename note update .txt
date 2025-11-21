@@ -224,4 +224,1252 @@ while ($i <= 5) {
 
 =============
 
+part 3
+
+chatgpt สอน
+siriphong
+
+https://claude.ai/chat/101f3ce6-d4c5-40da-891a-23c69e8a725c
+
+--
+
+ข้อมูล PHP Part 3 - คู่มือเรียนรู้อย่างละเอียด
+ไฟล์ php_part3.txt คือเอกสารสอน PHP ที่ครอบคลุม 3 หัวข้อหลัก ดังนี้:
+
+ข้อ 1: PHP Functions (ฟังก์ชัน)
+ฟังก์ชันคือ
+
+บลอกของโค้ดที่สามารถนำกลับมาใช้ซ้ำได้
+ไม่ทำงานอัตโนมัติเมื่อโหลดหน้า ต้องเรียกใช้
+มี Built-in Functions มากกว่า 1,000 ฟังก์ชัน
+
+หัวข้อย่อยที่สอน:
+1.1 การสร้างและเรียกใช้ฟังก์ชัน
+php<?php
+// การสร้างฟังก์ชัน
+function myMessage() {
+    echo "Hello world!";
+}
+
+// การเรียกใช้
+myMessage();
+?>
+1.2 ฟังก์ชันที่มีพารามิเตอร์
+php<?php
+// ฟังก์ชันรับ 1 พารามิเตอร์
+function familyName($fname) {
+    echo "$fname Refsnes.<br>";
+}
+
+familyName("Jani");
+familyName("Hege");
+
+echo "<hr>";
+
+// ฟังก์ชันรับหลายพารามิเตอร์
+function familyInfo($fname, $year) {
+    echo "$fname Refsnes. Born in $year<br>";
+}
+
+familyInfo("Stale", "1978");
+familyInfo("Kai Jim", "1983");
+?>
+1.3 ค่า Default ของพารามิเตอร์
+php<?php
+function setHeight($minheight = 50) {
+    echo "The height is: $minheight<br>";
+}
+
+setHeight(350);  // ใช้ค่า 350
+setHeight();     // ใช้ค่า default = 50
+setHeight(135);
+?>
+1.4 ฟังก์ชันที่ Return ค่า
+php<?php
+function sum($x, $y) {
+    $z = $x + $y;
+    return $z;
+}
+
+echo "5 + 10 = " . sum(5, 10) . "<br>";
+echo "7 + 13 = " . sum(7, 13) . "<br>";
+?>
+1.5 Pass by Reference
+php<?php
+// ส่งค่าแบบ reference (&) เพื่อแก้ไขตัวแปรต้นทาง
+function add_five(&$value) {
+    $value += 5;
+}
+
+$num = 2;
+add_five($num);
+echo "ค่าใหม่: $num";  // แสดง 7
+?>
+1.6 Variadic Functions (จำนวนพารามิเตอร์ไม่จำกัด)
+php<?php
+function sumMyNumbers(...$x) {
+    $n = 0;
+    foreach($x as $num) {
+        $n += $num;
+    }
+    return $n;
+}
+
+$result = sumMyNumbers(5, 2, 6, 2, 7, 7);
+echo "ผลรวม: $result<br>";
+
+// ต้องเป็นพารามิเตอร์ตัวสุดท้าย
+function myFamily($lastname, ...$firstname) {
+    foreach($firstname as $name) {
+        echo "Hi, $name $lastname.<br>";
+    }
+}
+
+myFamily("Doe", "Jane", "John", "Joey");
+?>
+1.7 Type Declarations (PHP 7+)
+php<?php declare(strict_types=1);
+
+// กำหนด Type สำหรับพารามิเตอร์
+function addNumbers(int $a, int $b) {
+    return $a + $b;
+}
+
+echo addNumbers(5, 5) . "<br>";
+// echo addNumbers(5, "5 days"); // จะ Error เพราะเปิด strict mode
+
+// กำหนด Type สำหรับค่าที่ Return
+function multiply(float $a, float $b): float {
+    return $a * $b;
+}
+
+echo multiply(2.5, 4.0);
+?>
+ตัวอย่างรวมทั้งหมด - ข้อ 1
+php<?php
+echo "<h2>PHP Functions - ตัวอย่างครบถ้วน</h2>";
+
+// 1. ฟังก์ชันพื้นฐาน
+function greet() {
+    echo "สวัสดีครับ!<br>";
+}
+greet();
+
+// 2. ฟังก์ชันรับพารามิเตอร์
+function introduce($name, $age = 18) {
+    echo "ชื่อ: $name, อายุ: $age ปี<br>";
+}
+introduce("สมชาย", 25);
+introduce("สมหญิง");  // ใช้ default age
+
+// 3. ฟังก์ชัน Return ค่า
+function calculate($a, $b, $operation = "add") {
+    switch($operation) {
+        case "add": return $a + $b;
+        case "multiply": return $a * $b;
+        default: return 0;
+    }
+}
+echo "5 + 3 = " . calculate(5, 3) . "<br>";
+echo "5 × 3 = " . calculate(5, 3, "multiply") . "<br>";
+
+// 4. Pass by Reference
+function increment(&$number) {
+    $number++;
+}
+$count = 10;
+increment($count);
+echo "Count หลัง increment: $count<br>";
+
+// 5. Variadic Function
+function findMax(...$numbers) {
+    if(empty($numbers)) return null;
+    $max = $numbers[0];
+    foreach($numbers as $num) {
+        if($num > $max) $max = $num;
+    }
+    return $max;
+}
+echo "ค่ามากสุด: " . findMax(3, 7, 2, 9, 1, 15, 4) . "<br>";
+
+// 6. Type Declaration
+declare(strict_types=1);
+function divide(float $a, float $b): float {
+    if($b == 0) return 0;
+    return $a / $b;
+}
+echo "10 ÷ 3 = " . divide(10, 3);
+?>
+
+ข้อ 2: PHP Arrays (อาร์เรย์)
+อาร์เรย์คือ
+
+ตัวแปรพิเศษที่เก็บหลายค่าในชื่อเดียว
+เข้าถึงข้อมูลผ่าน index (ตัวเลข) หรือ key (ชื่อ)
+
+ประเภทของ Array:
+
+Indexed Arrays - ใช้ตัวเลขเป็น index
+Associative Arrays - ใช้ชื่อเป็น key
+Multidimensional Arrays - array ซ้อน array
+
+หัวข้อย่อยที่สอน:
+2.1 Indexed Arrays
+php<?php
+// สร้าง array
+$cars = array("Volvo", "BMW", "Toyota");
+// หรือ
+$fruits = ["Apple", "Banana", "Orange"];
+
+// เข้าถึงข้อมูล
+echo $cars[0] . "<br>";  // Volvo
+
+// แก้ไขข้อมูล
+$cars[1] = "Ford";
+
+// วนลูป
+foreach($cars as $car) {
+    echo "$car<br>";
+}
+
+// นับจำนวน
+echo "มี " . count($cars) . " คัน";
+?>
+2.2 Associative Arrays
+php<?php
+// สร้าง array แบบ key => value
+$car = array(
+    "brand" => "Ford",
+    "model" => "Mustang",
+    "year" => 1964
+);
+
+// เข้าถึงด้วย key
+echo $car["model"] . "<br>";
+
+// วนลูปแสดง key และ value
+foreach($car as $key => $value) {
+    echo "$key: $value<br>";
+}
+?>
+2.3 การเพิ่มข้อมูล
+php<?php
+$fruits = ["Apple", "Banana"];
+
+// เพิ่มตอนท้าย
+$fruits[] = "Orange";
+
+// เพิ่มหลายตัว
+array_push($fruits, "Mango", "Grape");
+
+// Associative array
+$car = ["brand" => "Ford"];
+$car["color"] = "Red";
+$car += ["year" => 2024, "price" => 500000];
+
+print_r($fruits);
+print_r($car);
+?>
+2.4 การลบข้อมูล
+php<?php
+$cars = ["Volvo", "BMW", "Toyota", "Ford"];
+
+// ลบด้วย array_splice (reindex อัตโนมัติ)
+array_splice($cars, 1, 1);  // ลบ index 1
+
+// ลบด้วย unset (ไม่ reindex)
+unset($cars[2]);
+
+// ลบตัวแรก
+array_shift($cars);
+
+// ลบตัวสุดท้าย
+array_pop($cars);
+
+print_r($cars);
+?>
+2.5 การเรียงลำดับ
+php<?php
+$numbers = [4, 2, 8, 1, 9];
+
+// เรียงจากน้อยไปมาก
+sort($numbers);
+print_r($numbers);
+
+// เรียงจากมากไปน้อย
+rsort($numbers);
+print_r($numbers);
+
+// Associative array
+$age = ["Peter" => 35, "Ben" => 37, "Joe" => 43];
+
+// เรียงตาม value
+asort($age);   // น้อย→มาก
+arsort($age);  // มาก→น้อย
+
+// เรียงตาม key
+ksort($age);   // A→Z
+krsort($age);  // Z→A
+?>
+2.6 Multidimensional Arrays
+php<?php
+$cars = array(
+    array("Volvo", 22, 18),
+    array("BMW", 15, 13),
+    array("Saab", 5, 2)
+);
+
+// เข้าถึงข้อมูล
+echo $cars[0][0];  // Volvo
+echo $cars[1][1];  // 15
+
+// วนลูป 2 ชั้น
+for($row = 0; $row < 3; $row++) {
+    echo "<ul>";
+    for($col = 0; $col < 3; $col++) {
+        echo "<li>" . $cars[$row][$col] . "</li>";
+    }
+    echo "</ul>";
+}
+?>
+ตัวอย่างรวมทั้งหมด - ข้อ 2
+php<?php
+echo "<h2>PHP Arrays - ตัวอย่างครบถ้วน</h2>";
+
+// 1. Indexed Array
+echo "<h3>1. Indexed Array</h3>";
+$fruits = ["มะม่วง", "กล้วย", "ส้ม"];
+$fruits[] = "แอปเปิ้ล";
+array_push($fruits, "องุ่น", "สตรอเบอรี่");
+
+echo "ผลไม้ทั้งหมด (" . count($fruits) . " ชนิด):<br>";
+foreach($fruits as $index => $fruit) {
+    echo "[$index] $fruit<br>";
+}
+
+// 2. Associative Array
+echo "<h3>2. Associative Array</h3>";
+$student = [
+    "name" => "สมชาย ใจดี",
+    "age" => 20,
+    "grade" => "A",
+    "score" => 95
+];
+
+$student["major"] = "วิทยาการคอมพิวเตอร์";
+
+foreach($student as $key => $value) {
+    echo ucfirst($key) . ": $value<br>";
+}
+
+// 3. การจัดการ Array
+echo "<h3>3. การจัดการ Array</h3>";
+$numbers = [15, 3, 27, 8, 42, 5, 19];
+echo "ก่อนเรียง: " . implode(", ", $numbers) . "<br>";
+
+sort($numbers);
+echo "เรียงน้อย→มาก: " . implode(", ", $numbers) . "<br>";
+
+rsort($numbers);
+echo "เรียงมาก→น้อย: " . implode(", ", $numbers) . "<br>";
+
+// 4. Array Functions
+echo "<h3>4. Array Functions</h3>";
+$colors = ["red", "green", "blue", "red", "yellow"];
+
+echo "สีที่ซ้ำ:<br>";
+$count_values = array_count_values($colors);
+foreach($count_values as $color => $count) {
+    if($count > 1) {
+        echo "$color ปรากฏ $count ครั้ง<br>";
+    }
+}
+
+// ลบค่าซ้ำ
+$unique_colors = array_unique($colors);
+echo "สีที่ไม่ซ้ำ: " . implode(", ", $unique_colors) . "<br>";
+
+// 5. Multidimensional Array
+echo "<h3>5. Multidimensional Array</h3>";
+$products = [
+    ["name" => "Laptop", "price" => 25000, "stock" => 10],
+    ["name" => "Mouse", "price" => 500, "stock" => 50],
+    ["name" => "Keyboard", "price" => 1500, "stock" => 30]
+];
+
+echo "<table border='1'>";
+echo "<tr><th>สินค้า</th><th>ราคา</th><th>สต็อก</th></tr>";
+foreach($products as $product) {
+    echo "<tr>";
+    echo "<td>{$product['name']}</td>";
+    echo "<td>{$product['price']} บาท</td>";
+    echo "<td>{$product['stock']} ชิ้น</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+// 6. Array Search & Filter
+echo "<h3>6. Array Search & Filter</h3>";
+$ages = ["Peter" => 35, "Ben" => 37, "Joe" => 43, "Harry" => 28];
+
+// หาค่า
+$key = array_search(37, $ages);
+echo "อายุ 37 คือของ: $key<br>";
+
+// กรองข้อมูล
+$over_30 = array_filter($ages, function($age) {
+    return $age > 30;
+});
+echo "คนอายุมากกว่า 30:<br>";
+foreach($over_30 as $name => $age) {
+    echo "$name: $age ปี<br>";
+}
+?>
+
+ข้อ 3: PHP Superglobals & Regular Expressions
+3.1 Superglobals (ตัวแปรส่วนกลาง)
+Superglobals คือ
+
+ตัวแปรที่เข้าถึงได้ทุกที่ในโปรแกรม
+ไม่ต้องใช้ global keyword
+
+ประเภทของ Superglobals:
+php<?php
+// 1. $GLOBALS - เข้าถึงตัวแปร global
+$x = 100;
+function test1() {
+    echo $GLOBALS['x'];  // 100
+}
+
+// 2. $_SERVER - ข้อมูลเซิร์ฟเวอร์
+echo $_SERVER['PHP_SELF'] . "<br>";
+echo $_SERVER['SERVER_NAME'] . "<br>";
+echo $_SERVER['REQUEST_METHOD'] . "<br>";
+
+// 3. $_GET - รับข้อมูลจาก URL
+// example.php?name=John&age=25
+$name = $_GET['name'] ?? 'Guest';
+echo "Hello, $name";
+
+// 4. $_POST - รับข้อมูลจาก Form
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'] ?? '';
+    echo "Welcome, $username";
+}
+
+// 5. $_REQUEST - รวม GET, POST, COOKIE
+$data = $_REQUEST['field_name'] ?? '';
+?>
+3.2 Regular Expressions (Regex)
+Regex คือ
+
+รูปแบบการค้นหาข้อความ
+ใช้สำหรับ validation, search, replace
+
+ฟังก์ชัน Regex หลัก:
+php<?php
+// 1. preg_match() - ตรวจสอบว่าพบรูปแบบหรือไม่
+$text = "Visit W3Schools";
+$pattern = "/w3schools/i";  // i = case-insensitive
+
+if(preg_match($pattern, $text)) {
+    echo "พบคำว่า w3schools<br>";
+}
+
+// 2. preg_match_all() - นับจำนวนที่พบ
+$text = "The rain in SPAIN falls mainly on the plains.";
+$pattern = "/ain/i";
+$count = preg_match_all($pattern, $text);
+echo "พบคำว่า 'ain' จำนวน $count ครั้ง<br>";
+
+// 3. preg_replace() - แทนที่ข้อความ
+$text = "Visit Microsoft!";
+$pattern = "/microsoft/i";
+$result = preg_replace($pattern, "W3Schools", $text);
+echo $result . "<br>";
+?>
+Regex Patterns ที่ใช้บ่อย:
+php<?php
+// ตรวจสอบอีเมล
+function validateEmail($email) {
+    $pattern = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    return preg_match($pattern, $email);
+}
+
+// ตรวจสอบเบอร์โทร (10 หลัก)
+function validatePhone($phone) {
+    $pattern = "/^[0-9]{10}$/";
+    return preg_match($pattern, $phone);
+}
+
+// ตรวจสอบรหัสผ่าน (8-20 ตัว, มีตัวเลขและตัวอักษร)
+function validatePassword($password) {
+    $pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/";
+    return preg_match($pattern, $password);
+}
+
+// ทดสอบ
+echo validateEmail("test@example.com") ? "Email ถูกต้อง" : "Email ไม่ถูกต้อง";
+echo "<br>";
+echo validatePhone("0812345678") ? "เบอร์ถูกต้อง" : "เบอร์ไม่ถูกต้อง";
+?>
+ตัวอย่างรวมทั้งหมด - ข้อ 3
+php<?php
+echo "<h2>PHP Superglobals & Regex - ตัวอย่างครบถ้วน</h2>";
+
+// ========== PART 1: SUPERGLOBALS ==========
+echo "<h3>PART 1: Superglobals</h3>";
+
+// 1. $GLOBALS
+$website = "MyWebsite.com";
+$year = 2024;
+
+function showInfo() {
+    echo "Welcome to " . $GLOBALS['website'] . " (Est. " . $GLOBALS['year'] . ")<br>";
+}
+showInfo();
+
+// 2. $_SERVER
+echo "<h4>Server Information:</h4>";
+echo "Script Name: " . $_SERVER['PHP_SELF'] . "<br>";
+echo "Server Name: " . $_SERVER['SERVER_NAME'] . "<br>";
+echo "Request Method: " . $_SERVER['REQUEST_METHOD'] . "<br>";
+echo "User Agent: " . $_SERVER['HTTP_USER_AGENT'] . "<br>";
+
+// 3. Form ตัวอย่าง (GET & POST)
+?>
+<h4>3. Form Example</h4>
+<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <label>ชื่อ: <input type="text" name="fullname" required></label><br>
+    <label>อีเมล: <input type="email" name="email" required></label><br>
+    <label>เบอร์โทร: <input type="text" name="phone" required></label><br>
+    <button type="submit">ส่งข้อมูล</button>
+</form>
+
+<?php
+// ประมวลผล Form
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = htmlspecialchars($_POST['fullname'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $phone = htmlspecialchars($_POST['phone'] ?? '');
+    
+    echo "<div style='background:#d4edda;padding:10px;margin:10px 0;'>";
+    echo "<strong>ข้อมูลที่รับ:</strong><br>";
+    echo "ชื่อ: $fullname<br>";
+    echo "อีเมล: $email<br>";
+    echo "เบอร์โทร: $phone<br>";
+    echo "</div>";
+}
+
+// ========== PART 2: REGULAR EXPRESSIONS ==========
+echo "<h3>PART 2: Regular Expressions</h3>";
+
+// ฟังก์ชัน Validation
+function validateData($data, $type) {
+    $patterns = [
+        'email' => "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/",
+        'phone' => "/^[0-9]{10}$/",
+        'password' => "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/",
+        'url' => "/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/",
+        'thai_id' => "/^[0-9]{13}$/"
+    ];
+    
+    return preg_match($patterns[$type], $data);
+}
+
+// ทดสอบ Validation
+$test_data = [
+    ['email', 'test@example.com'],
+    ['email', 'invalid-email'],
+    ['phone', '0812345678'],
+    ['phone', '081234567'],  // ไม่ครบ 10 หลัก
+    ['password', 'Pass123!@#'],
+    ['password', '12345'],  // ไม่ผ่าน
+    ['url', 'https://www.example.com'],
+    ['thai_id', '1234567890123']
+];
+
+echo "<table border='1' style='border-collapse:collapse;'>";
+echo "<tr><th>ประเภท</th><th>ข้อมูล</th><th>ผลลัพธ์</th></tr>";
+
+foreach($test_data as $test) {
+    $type = $test[0];
+    $value = $test[1];
+    $result = validateData($value, $type) ? 
+        "<span style='color:green'>✓ ถูกต้อง</span>" : 
+        "<span style='color:red'>✗ ไม่ถูกต้อง</span>";
+    
+    echo "<tr>";
+    echo "<td>$type</td>";
+    echo "<td>$value</td>";
+    echo "<td>$result</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+// Regex Search & Replace
+echo "<h4>Search & Replace Example:</h4>";
+$text = "เบอร์โทรติดต่อ: 081-234-5678 หรือ 02-123-4567";
+$pattern = "/(\d{2,3})-(\d{3})-(\d{4})/";
+$replacement = "($1) $2-$3";
+$formatted = preg_replace($pattern, $replacement, $text);
+echo "ก่อน: $text<br>";
+echo "หลัง: $formatted<br>";
+
+// นับคำในข้อความ
+echo "<h4>Word Count Example:</h4>";
+$sentence = "PHP is powerful. PHP is flexible. PHP is easy to learn.";
+$word = "PHP";
+$pattern = "/$word/i";
+$count = preg_match_all($pattern, $sentence);
+echo "ประโยค: \"$sentence\"<br>";
+echo "พบคำว่า '$word' จำนวน <strong>$count</strong> ครั้ง";
+?>
+
+สรุป
+ข้อ 1 - Functions:
+
+สร้างฟังก์ชันด้วย function
+รับพารามิเตอร์ได้หลายแบบ (ปกติ, default, reference, variadic)
+Return ค่าได้
+กำหนด Type ได้ (PHP 7+)
+
+ข้อ 2 - Arrays:
+
+3 ประเภท: Indexed, Associative, Multidimensional
+จัดการด้วย functions มากมาย (push, pop, sort, filter, etc.)
+วนลูปด้วย foreach
+เข้าถึงด้วย index/key
+
+ข้อ 3 - Superglobals & Regex:
+
+Superglobals: $GLOBALS, $_SERVER, $_GET, $_POST, $_REQUEST
+Regex: ค้นหา/ตรวจสอบรูปแบบข้อความ
+ฟังก์ชัน: preg_match(), preg_match_all(), preg_replace()
+
+ตัวอย่างทั้งหมดสามารถรันได้เลยโดยบันทึกเป็นไฟล์ .php แยกกันไป! 🚀
+
+------------
+
+part 3
+
+ข้อมูล PHP Part 3 - คู่มือเรียนรู้อย่างละเอียด
+ไฟล์ php_part3.txt คือเอกสารสอน PHP ที่ครอบคลุม 3 หัวข้อหลัก ดังนี้:
+
+ข้อ 1: PHP Functions (ฟังก์ชัน)
+ฟังก์ชันคือ
+
+บลอกของโค้ดที่สามารถนำกลับมาใช้ซ้ำได้
+ไม่ทำงานอัตโนมัติเมื่อโหลดหน้า ต้องเรียกใช้
+มี Built-in Functions มากกว่า 1,000 ฟังก์ชัน
+
+หัวข้อย่อยที่สอน:
+1.1 การสร้างและเรียกใช้ฟังก์ชัน
+php<?php
+// การสร้างฟังก์ชัน
+function myMessage() {
+    echo "Hello world!";
+}
+
+// การเรียกใช้
+myMessage();
+?>
+1.2 ฟังก์ชันที่มีพารามิเตอร์
+php<?php
+// ฟังก์ชันรับ 1 พารามิเตอร์
+function familyName($fname) {
+    echo "$fname Refsnes.<br>";
+}
+
+familyName("Jani");
+familyName("Hege");
+
+echo "<hr>";
+
+// ฟังก์ชันรับหลายพารามิเตอร์
+function familyInfo($fname, $year) {
+    echo "$fname Refsnes. Born in $year<br>";
+}
+
+familyInfo("Stale", "1978");
+familyInfo("Kai Jim", "1983");
+?>
+1.3 ค่า Default ของพารามิเตอร์
+php<?php
+function setHeight($minheight = 50) {
+    echo "The height is: $minheight<br>";
+}
+
+setHeight(350);  // ใช้ค่า 350
+setHeight();     // ใช้ค่า default = 50
+setHeight(135);
+?>
+1.4 ฟังก์ชันที่ Return ค่า
+php<?php
+function sum($x, $y) {
+    $z = $x + $y;
+    return $z;
+}
+
+echo "5 + 10 = " . sum(5, 10) . "<br>";
+echo "7 + 13 = " . sum(7, 13) . "<br>";
+?>
+1.5 Pass by Reference
+php<?php
+// ส่งค่าแบบ reference (&) เพื่อแก้ไขตัวแปรต้นทาง
+function add_five(&$value) {
+    $value += 5;
+}
+
+$num = 2;
+add_five($num);
+echo "ค่าใหม่: $num";  // แสดง 7
+?>
+1.6 Variadic Functions (จำนวนพารามิเตอร์ไม่จำกัด)
+php<?php
+function sumMyNumbers(...$x) {
+    $n = 0;
+    foreach($x as $num) {
+        $n += $num;
+    }
+    return $n;
+}
+
+$result = sumMyNumbers(5, 2, 6, 2, 7, 7);
+echo "ผลรวม: $result<br>";
+
+// ต้องเป็นพารามิเตอร์ตัวสุดท้าย
+function myFamily($lastname, ...$firstname) {
+    foreach($firstname as $name) {
+        echo "Hi, $name $lastname.<br>";
+    }
+}
+
+myFamily("Doe", "Jane", "John", "Joey");
+?>
+1.7 Type Declarations (PHP 7+)
+php<?php declare(strict_types=1);
+
+// กำหนด Type สำหรับพารามิเตอร์
+function addNumbers(int $a, int $b) {
+    return $a + $b;
+}
+
+echo addNumbers(5, 5) . "<br>";
+// echo addNumbers(5, "5 days"); // จะ Error เพราะเปิด strict mode
+
+// กำหนด Type สำหรับค่าที่ Return
+function multiply(float $a, float $b): float {
+    return $a * $b;
+}
+
+echo multiply(2.5, 4.0);
+?>
+ตัวอย่างรวมทั้งหมด - ข้อ 1
+php<?php
+echo "<h2>PHP Functions - ตัวอย่างครบถ้วน</h2>";
+
+// 1. ฟังก์ชันพื้นฐาน
+function greet() {
+    echo "สวัสดีครับ!<br>";
+}
+greet();
+
+// 2. ฟังก์ชันรับพารามิเตอร์
+function introduce($name, $age = 18) {
+    echo "ชื่อ: $name, อายุ: $age ปี<br>";
+}
+introduce("สมชาย", 25);
+introduce("สมหญิง");  // ใช้ default age
+
+// 3. ฟังก์ชัน Return ค่า
+function calculate($a, $b, $operation = "add") {
+    switch($operation) {
+        case "add": return $a + $b;
+        case "multiply": return $a * $b;
+        default: return 0;
+    }
+}
+echo "5 + 3 = " . calculate(5, 3) . "<br>";
+echo "5 × 3 = " . calculate(5, 3, "multiply") . "<br>";
+
+// 4. Pass by Reference
+function increment(&$number) {
+    $number++;
+}
+$count = 10;
+increment($count);
+echo "Count หลัง increment: $count<br>";
+
+// 5. Variadic Function
+function findMax(...$numbers) {
+    if(empty($numbers)) return null;
+    $max = $numbers[0];
+    foreach($numbers as $num) {
+        if($num > $max) $max = $num;
+    }
+    return $max;
+}
+echo "ค่ามากสุด: " . findMax(3, 7, 2, 9, 1, 15, 4) . "<br>";
+
+// 6. Type Declaration
+declare(strict_types=1);
+function divide(float $a, float $b): float {
+    if($b == 0) return 0;
+    return $a / $b;
+}
+echo "10 ÷ 3 = " . divide(10, 3);
+?>
+
+ข้อ 2: PHP Arrays (อาร์เรย์)
+อาร์เรย์คือ
+
+ตัวแปรพิเศษที่เก็บหลายค่าในชื่อเดียว
+เข้าถึงข้อมูลผ่าน index (ตัวเลข) หรือ key (ชื่อ)
+
+ประเภทของ Array:
+
+Indexed Arrays - ใช้ตัวเลขเป็น index
+Associative Arrays - ใช้ชื่อเป็น key
+Multidimensional Arrays - array ซ้อน array
+
+หัวข้อย่อยที่สอน:
+2.1 Indexed Arrays
+php<?php
+// สร้าง array
+$cars = array("Volvo", "BMW", "Toyota");
+// หรือ
+$fruits = ["Apple", "Banana", "Orange"];
+
+// เข้าถึงข้อมูล
+echo $cars[0] . "<br>";  // Volvo
+
+// แก้ไขข้อมูล
+$cars[1] = "Ford";
+
+// วนลูป
+foreach($cars as $car) {
+    echo "$car<br>";
+}
+
+// นับจำนวน
+echo "มี " . count($cars) . " คัน";
+?>
+2.2 Associative Arrays
+php<?php
+// สร้าง array แบบ key => value
+$car = array(
+    "brand" => "Ford",
+    "model" => "Mustang",
+    "year" => 1964
+);
+
+// เข้าถึงด้วย key
+echo $car["model"] . "<br>";
+
+// วนลูปแสดง key และ value
+foreach($car as $key => $value) {
+    echo "$key: $value<br>";
+}
+?>
+2.3 การเพิ่มข้อมูล
+php<?php
+$fruits = ["Apple", "Banana"];
+
+// เพิ่มตอนท้าย
+$fruits[] = "Orange";
+
+// เพิ่มหลายตัว
+array_push($fruits, "Mango", "Grape");
+
+// Associative array
+$car = ["brand" => "Ford"];
+$car["color"] = "Red";
+$car += ["year" => 2024, "price" => 500000];
+
+print_r($fruits);
+print_r($car);
+?>
+2.4 การลบข้อมูล
+php<?php
+$cars = ["Volvo", "BMW", "Toyota", "Ford"];
+
+// ลบด้วย array_splice (reindex อัตโนมัติ)
+array_splice($cars, 1, 1);  // ลบ index 1
+
+// ลบด้วย unset (ไม่ reindex)
+unset($cars[2]);
+
+// ลบตัวแรก
+array_shift($cars);
+
+// ลบตัวสุดท้าย
+array_pop($cars);
+
+print_r($cars);
+?>
+2.5 การเรียงลำดับ
+php<?php
+$numbers = [4, 2, 8, 1, 9];
+
+// เรียงจากน้อยไปมาก
+sort($numbers);
+print_r($numbers);
+
+// เรียงจากมากไปน้อย
+rsort($numbers);
+print_r($numbers);
+
+// Associative array
+$age = ["Peter" => 35, "Ben" => 37, "Joe" => 43];
+
+// เรียงตาม value
+asort($age);   // น้อย→มาก
+arsort($age);  // มาก→น้อย
+
+// เรียงตาม key
+ksort($age);   // A→Z
+krsort($age);  // Z→A
+?>
+2.6 Multidimensional Arrays
+php<?php
+$cars = array(
+    array("Volvo", 22, 18),
+    array("BMW", 15, 13),
+    array("Saab", 5, 2)
+);
+
+// เข้าถึงข้อมูล
+echo $cars[0][0];  // Volvo
+echo $cars[1][1];  // 15
+
+// วนลูป 2 ชั้น
+for($row = 0; $row < 3; $row++) {
+    echo "<ul>";
+    for($col = 0; $col < 3; $col++) {
+        echo "<li>" . $cars[$row][$col] . "</li>";
+    }
+    echo "</ul>";
+}
+?>
+ตัวอย่างรวมทั้งหมด - ข้อ 2
+php<?php
+echo "<h2>PHP Arrays - ตัวอย่างครบถ้วน</h2>";
+
+// 1. Indexed Array
+echo "<h3>1. Indexed Array</h3>";
+$fruits = ["มะม่วง", "กล้วย", "ส้ม"];
+$fruits[] = "แอปเปิ้ล";
+array_push($fruits, "องุ่น", "สตรอเบอรี่");
+
+echo "ผลไม้ทั้งหมด (" . count($fruits) . " ชนิด):<br>";
+foreach($fruits as $index => $fruit) {
+    echo "[$index] $fruit<br>";
+}
+
+// 2. Associative Array
+echo "<h3>2. Associative Array</h3>";
+$student = [
+    "name" => "สมชาย ใจดี",
+    "age" => 20,
+    "grade" => "A",
+    "score" => 95
+];
+
+$student["major"] = "วิทยาการคอมพิวเตอร์";
+
+foreach($student as $key => $value) {
+    echo ucfirst($key) . ": $value<br>";
+}
+
+// 3. การจัดการ Array
+echo "<h3>3. การจัดการ Array</h3>";
+$numbers = [15, 3, 27, 8, 42, 5, 19];
+echo "ก่อนเรียง: " . implode(", ", $numbers) . "<br>";
+
+sort($numbers);
+echo "เรียงน้อย→มาก: " . implode(", ", $numbers) . "<br>";
+
+rsort($numbers);
+echo "เรียงมาก→น้อย: " . implode(", ", $numbers) . "<br>";
+
+// 4. Array Functions
+echo "<h3>4. Array Functions</h3>";
+$colors = ["red", "green", "blue", "red", "yellow"];
+
+echo "สีที่ซ้ำ:<br>";
+$count_values = array_count_values($colors);
+foreach($count_values as $color => $count) {
+    if($count > 1) {
+        echo "$color ปรากฏ $count ครั้ง<br>";
+    }
+}
+
+// ลบค่าซ้ำ
+$unique_colors = array_unique($colors);
+echo "สีที่ไม่ซ้ำ: " . implode(", ", $unique_colors) . "<br>";
+
+// 5. Multidimensional Array
+echo "<h3>5. Multidimensional Array</h3>";
+$products = [
+    ["name" => "Laptop", "price" => 25000, "stock" => 10],
+    ["name" => "Mouse", "price" => 500, "stock" => 50],
+    ["name" => "Keyboard", "price" => 1500, "stock" => 30]
+];
+
+echo "<table border='1'>";
+echo "<tr><th>สินค้า</th><th>ราคา</th><th>สต็อก</th></tr>";
+foreach($products as $product) {
+    echo "<tr>";
+    echo "<td>{$product['name']}</td>";
+    echo "<td>{$product['price']} บาท</td>";
+    echo "<td>{$product['stock']} ชิ้น</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+// 6. Array Search & Filter
+echo "<h3>6. Array Search & Filter</h3>";
+$ages = ["Peter" => 35, "Ben" => 37, "Joe" => 43, "Harry" => 28];
+
+// หาค่า
+$key = array_search(37, $ages);
+echo "อายุ 37 คือของ: $key<br>";
+
+// กรองข้อมูล
+$over_30 = array_filter($ages, function($age) {
+    return $age > 30;
+});
+echo "คนอายุมากกว่า 30:<br>";
+foreach($over_30 as $name => $age) {
+    echo "$name: $age ปี<br>";
+}
+?>
+
+ข้อ 3: PHP Superglobals & Regular Expressions
+3.1 Superglobals (ตัวแปรส่วนกลาง)
+Superglobals คือ
+
+ตัวแปรที่เข้าถึงได้ทุกที่ในโปรแกรม
+ไม่ต้องใช้ global keyword
+
+ประเภทของ Superglobals:
+php<?php
+// 1. $GLOBALS - เข้าถึงตัวแปร global
+$x = 100;
+function test1() {
+    echo $GLOBALS['x'];  // 100
+}
+
+// 2. $_SERVER - ข้อมูลเซิร์ฟเวอร์
+echo $_SERVER['PHP_SELF'] . "<br>";
+echo $_SERVER['SERVER_NAME'] . "<br>";
+echo $_SERVER['REQUEST_METHOD'] . "<br>";
+
+// 3. $_GET - รับข้อมูลจาก URL
+// example.php?name=John&age=25
+$name = $_GET['name'] ?? 'Guest';
+echo "Hello, $name";
+
+// 4. $_POST - รับข้อมูลจาก Form
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'] ?? '';
+    echo "Welcome, $username";
+}
+
+// 5. $_REQUEST - รวม GET, POST, COOKIE
+$data = $_REQUEST['field_name'] ?? '';
+?>
+3.2 Regular Expressions (Regex)
+Regex คือ
+
+รูปแบบการค้นหาข้อความ
+ใช้สำหรับ validation, search, replace
+
+ฟังก์ชัน Regex หลัก:
+php<?php
+// 1. preg_match() - ตรวจสอบว่าพบรูปแบบหรือไม่
+$text = "Visit W3Schools";
+$pattern = "/w3schools/i";  // i = case-insensitive
+
+if(preg_match($pattern, $text)) {
+    echo "พบคำว่า w3schools<br>";
+}
+
+// 2. preg_match_all() - นับจำนวนที่พบ
+$text = "The rain in SPAIN falls mainly on the plains.";
+$pattern = "/ain/i";
+$count = preg_match_all($pattern, $text);
+echo "พบคำว่า 'ain' จำนวน $count ครั้ง<br>";
+
+// 3. preg_replace() - แทนที่ข้อความ
+$text = "Visit Microsoft!";
+$pattern = "/microsoft/i";
+$result = preg_replace($pattern, "W3Schools", $text);
+echo $result . "<br>";
+?>
+Regex Patterns ที่ใช้บ่อย:
+php<?php
+// ตรวจสอบอีเมล
+function validateEmail($email) {
+    $pattern = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    return preg_match($pattern, $email);
+}
+
+// ตรวจสอบเบอร์โทร (10 หลัก)
+function validatePhone($phone) {
+    $pattern = "/^[0-9]{10}$/";
+    return preg_match($pattern, $phone);
+}
+
+// ตรวจสอบรหัสผ่าน (8-20 ตัว, มีตัวเลขและตัวอักษร)
+function validatePassword($password) {
+    $pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/";
+    return preg_match($pattern, $password);
+}
+
+// ทดสอบ
+echo validateEmail("test@example.com") ? "Email ถูกต้อง" : "Email ไม่ถูกต้อง";
+echo "<br>";
+echo validatePhone("0812345678") ? "เบอร์ถูกต้อง" : "เบอร์ไม่ถูกต้อง";
+?>
+ตัวอย่างรวมทั้งหมด - ข้อ 3
+php<?php
+echo "<h2>PHP Superglobals & Regex - ตัวอย่างครบถ้วน</h2>";
+
+// ========== PART 1: SUPERGLOBALS ==========
+echo "<h3>PART 1: Superglobals</h3>";
+
+// 1. $GLOBALS
+$website = "MyWebsite.com";
+$year = 2024;
+
+function showInfo() {
+    echo "Welcome to " . $GLOBALS['website'] . " (Est. " . $GLOBALS['year'] . ")<br>";
+}
+showInfo();
+
+// 2. $_SERVER
+echo "<h4>Server Information:</h4>";
+echo "Script Name: " . $_SERVER['PHP_SELF'] . "<br>";
+echo "Server Name: " . $_SERVER['SERVER_NAME'] . "<br>";
+echo "Request Method: " . $_SERVER['REQUEST_METHOD'] . "<br>";
+echo "User Agent: " . $_SERVER['HTTP_USER_AGENT'] . "<br>";
+
+// 3. Form ตัวอย่าง (GET & POST)
+?>
+<h4>3. Form Example</h4>
+<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <label>ชื่อ: <input type="text" name="fullname" required></label><br>
+    <label>อีเมล: <input type="email" name="email" required></label><br>
+    <label>เบอร์โทร: <input type="text" name="phone" required></label><br>
+    <button type="submit">ส่งข้อมูล</button>
+</form>
+
+<?php
+// ประมวลผล Form
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = htmlspecialchars($_POST['fullname'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $phone = htmlspecialchars($_POST['phone'] ?? '');
+    
+    echo "<div style='background:#d4edda;padding:10px;margin:10px 0;'>";
+    echo "<strong>ข้อมูลที่รับ:</strong><br>";
+    echo "ชื่อ: $fullname<br>";
+    echo "อีเมล: $email<br>";
+    echo "เบอร์โทร: $phone<br>";
+    echo "</div>";
+}
+
+// ========== PART 2: REGULAR EXPRESSIONS ==========
+echo "<h3>PART 2: Regular Expressions</h3>";
+
+// ฟังก์ชัน Validation
+function validateData($data, $type) {
+    $patterns = [
+        'email' => "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/",
+        'phone' => "/^[0-9]{10}$/",
+        'password' => "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/",
+        'url' => "/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/",
+        'thai_id' => "/^[0-9]{13}$/"
+    ];
+    
+    return preg_match($patterns[$type], $data);
+}
+
+// ทดสอบ Validation
+$test_data = [
+    ['email', 'test@example.com'],
+    ['email', 'invalid-email'],
+    ['phone', '0812345678'],
+    ['phone', '081234567'],  // ไม่ครบ 10 หลัก
+    ['password', 'Pass123!@#'],
+    ['password', '12345'],  // ไม่ผ่าน
+    ['url', 'https://www.example.com'],
+    ['thai_id', '1234567890123']
+];
+
+echo "<table border='1' style='border-collapse:collapse;'>";
+echo "<tr><th>ประเภท</th><th>ข้อมูล</th><th>ผลลัพธ์</th></tr>";
+
+foreach($test_data as $test) {
+    $type = $test[0];
+    $value = $test[1];
+    $result = validateData($value, $type) ? 
+        "<span style='color:green'>✓ ถูกต้อง</span>" : 
+        "<span style='color:red'>✗ ไม่ถูกต้อง</span>";
+    
+    echo "<tr>";
+    echo "<td>$type</td>";
+    echo "<td>$value</td>";
+    echo "<td>$result</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+// Regex Search & Replace
+echo "<h4>Search & Replace Example:</h4>";
+$text = "เบอร์โทรติดต่อ: 081-234-5678 หรือ 02-123-4567";
+$pattern = "/(\d{2,3})-(\d{3})-(\d{4})/";
+$replacement = "($1) $2-$3";
+$formatted = preg_replace($pattern, $replacement, $text);
+echo "ก่อน: $text<br>";
+echo "หลัง: $formatted<br>";
+
+// นับคำในข้อความ
+echo "<h4>Word Count Example:</h4>";
+$sentence = "PHP is powerful. PHP is flexible. PHP is easy to learn.";
+$word = "PHP";
+$pattern = "/$word/i";
+$count = preg_match_all($pattern, $sentence);
+echo "ประโยค: \"$sentence\"<br>";
+echo "พบคำว่า '$word' จำนวน <strong>$count</strong> ครั้ง";
+?>
+
+สรุป
+ข้อ 1 - Functions:
+
+สร้างฟังก์ชันด้วย function
+รับพารามิเตอร์ได้หลายแบบ (ปกติ, default, reference, variadic)
+Return ค่าได้
+กำหนด Type ได้ (PHP 7+)
+
+ข้อ 2 - Arrays:
+
+3 ประเภท: Indexed, Associative, Multidimensional
+จัดการด้วย functions มากมาย (push, pop, sort, filter, etc.)
+วนลูปด้วย foreach
+เข้าถึงด้วย index/key
+
+ข้อ 3 - Superglobals & Regex:
+
+Superglobals: $GLOBALS, $_SERVER, $_GET, $_POST, $_REQUEST
+Regex: ค้นหา/ตรวจสอบรูปแบบข้อความ
+ฟังก์ชัน: preg_match(), preg_match_all(), preg_replace()
+
+ตัวอย่างทั้งหมดสามารถรันได้เลยโดยบันทึกเป็นไฟล์ .php แยกกันไป! 🚀
+
+-----------
+
+
 
