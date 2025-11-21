@@ -177,5 +177,40 @@ Route::get('/PHP_fourm__validate_mark2', function () {
 
 
 
+Route::get('/PHP_Date_Function', function () {
+    return view('PHP_Date_Function');
+});
 
+
+
+
+Route::get('/PHP_Include_Require', function () {
+    return view('PHP_Include_Require');
+});
+
+
+
+Route::get('/PHP_File_Handling', function () {
+    return view('PHP_File_Handling');
+});
+
+
+
+
+Route::get('/PHP_File_Open_Read_Close', function () {
+    return view('PHP_File_Open_Read_Close');
+});
+
+
+
+
+Route::get('/PHP_File_Create_Write', function () {
+    return view('PHP_File_Create_Write');
+});
+
+
+
+Route::get('/PHP_File_Upload', function () {
+    return view('PHP_File_Upload');
+});
 
