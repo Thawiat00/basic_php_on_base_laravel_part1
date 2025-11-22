@@ -359,3 +359,50 @@ Route::get('/PHP_and_JSON', function () {
 Route::get('/PHP_Exceptions', function () {
     return view('PHP_Exceptions');
 });
+
+
+
+
+Route::get('/PHP_try_catch', function () {
+    return view('PHP_try_catch');
+});
+
+
+
+
+Route::get('/PHP_try_catch_finally', function () {
+    return view('PHP_try_catch_finally');
+});
+
+
+
+
+Route::get('/PHP_Exception_Object', function () {
+    return view('PHP_Exception_Object');
+});
+
+
+
+
+Route::get('/PHP_upload_test', function () {
+    return view('PHP_upload_test');
+});
+
+
+
+Route::get('/PHP_Form_Handling', function () {
+    return view('PHP_Form_Handling');
+});
+
+
+
+Route::get('/PHP_Form_Validation', function () {
+    return view('PHP_Form_Validation');
+});
+
+
+
+Route::get('/PHP_Validate_Name_E_mailand_URL', function () {
+    return view('PHP_Validate_Name_E_mailand_URL');
+});
+
