@@ -214,3 +214,148 @@ Route::get('/PHP_File_Upload', function () {
     return view('PHP_File_Upload');
 });
 
+
+
+
+Route::get('/PHP_Cookies', function () {
+    return view('PHP_Cookies');
+});
+
+
+
+
+Route::get('/PHP_session_start', function () {
+    return view('PHP_session_start');
+});
+
+
+
+Route::get('/PHP_Session_Get', function () {
+    return view('PHP_Session_Get');
+});
+
+
+
+
+Route::get('/PHP_Session_Modify', function () {
+    return view('PHP_Session_Modify');
+});
+
+
+
+
+
+Route::get('/PHP_Session_Destroy', function () {
+    return view('PHP_Session_Destroy');
+});
+
+
+
+
+
+
+Route::get('/PHP_Filters', function () {
+    return view('PHP_Filters');
+});
+
+
+
+Route::get('/PHP_filter_list', function () {
+    return view('PHP_filter_list');
+});
+
+
+
+
+Route::get('/PHP_filter_var()_Function', function () {
+    return view('PHP_filter_var()_Function');
+});
+
+
+
+
+Route::get('/PHP_Validate_an_Integer', function () {
+    return view('PHP_Validate_an_Integer');
+});
+
+
+
+Route::get('/PHP_Tip_filter_var()_and_Problem_With_0', function () {
+    return view('PHP_Tip_filter_var()_and_Problem_With_0');
+});
+
+
+
+
+
+Route::get('/PHP_Validate_an_IP_Address', function () {
+    return view('PHP_Validate_an_IP_Address');
+});
+
+
+
+
+
+Route::get('/PHP_Sanitize_and_Validate_Email', function () {
+    return view('PHP_Sanitize_and_Validate_Email');
+});
+
+
+
+
+Route::get('/PHP_Sanitize_and_Validate_URL', function () {
+    return view('PHP_Sanitize_and_Validate_URL');
+});
+
+
+Route::get('/PHP_Filters_Advance_Validate_Integer_With_Range', function () {
+    return view('PHP_Filters_Advance_Validate_Integer_With_Range');
+});
+
+
+
+
+Route::get('/PHP_Filters_Advanced_Validate_IPv6_Address', function () {
+    return view('PHP_Filters_Advanced_Validate_IPv6_Address');
+});
+
+
+
+
+
+
+Route::get('/PHP_Filters_Advanced_Validate_URL', function () {
+    return view('PHP_Filters_Advanced_Validate_URL');
+});
+
+
+
+
+
+Route::get('/PHP_Filters_Advanced_Remove_Characters_With_ASCII', function () {
+    return view('PHP_Filters_Advanced_Remove_Characters_With_ASCII');
+});
+
+
+
+
+
+Route::get('/PHP_Callback_Functions', function () {
+    return view('PHP_Callback_Functions');
+});
+
+
+
+
+
+
+Route::get('/PHP_and_JSON', function () {
+    return view('PHP_and_JSON');
+});
+
+
+
+
+Route::get('/PHP_Exceptions', function () {
+    return view('PHP_Exceptions');
+});

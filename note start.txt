@@ -1,5 +1,24 @@
 ขั้นตอนถัดไปแนะนำ
 
+--------
+start docker 
+
+phpmyadmin/phpmyadmin:latest
+
+and
+
+mysql:latest
+
+-------
+8081: 
+
+phpmyadmin
+
+id: root
+pass: keep1234
+
+---------
+
 ทดสอบ server Laravel
 
 php artisan serve
