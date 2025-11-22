@@ -750,4 +750,97 @@ Route::get('/PHP_XML_Expat_Parser', function () {
 
 
 
+Route::get('/PHP_AJAX_Name_Suggestion', function () {
+    return view('PHP_AJAX_Name_Suggestion');
+});
 
+
+
+
+
+
+Route::get('/PHP_AJAX_Name_Suggestion_demo', function () {
+    return view('PHP_AJAX_Name_Suggestion_demo');
+});
+
+
+
+
+
+
+Route::get('/PHP_AJAX_and_MySQL', function () {
+    return view('PHP_AJAX_and_MySQL');
+});
+
+
+
+
+
+Route::get('/PHP_AJAX_and_MySQL_demo', function () {
+    return view('PHP_AJAX_and_MySQL_demo');
+});
+
+
+
+
+
+
+
+
+
+
+Route::get('/PHP_AJAX_and_XML', function () {
+    return view('PHP_AJAX_and_XML');
+});
+
+
+
+
+
+
+
+
+Route::get('/PHP_AJAX_and_XML_demo', function () {
+    return view('PHP_AJAX_and_XML_demo');
+});
+
+
+
+
+
+
+
+Route::get('/PHP_AJAX_Live_Search', function () {
+    return view('PHP_AJAX_Live_Search');
+});
+
+
+
+
+
+
+Route::get('/PHP_AJAX_Live_Search_demo', function () {
+    return view('PHP_AJAX_Live_Search_demo');
+});
+
+
+
+
+
+
+
+
+
+
+Route::get('/PHP_AJAX_Poll', function () {
+    return view('PHP_AJAX_Poll');
+});
+
+
+
+
+
+
+Route::get('/PHP_AJAX_Poll_demo', function () {
+    return view('PHP_AJAX_Poll_demo');
+});
