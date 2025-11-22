@@ -717,14 +717,37 @@ Route::get('/PHP_MySQL_LIMIT_Data', function () {
 
 
 
-
-
-
-
-
 Route::get('/PHP_MySQL_LIMIT_Data_demo', function () {
     return view('PHP_MySQL_LIMIT_Data_demo');
 });
+
+
+
+
+Route::get('/SimpleXML_Parser', function () {
+    return view('SimpleXML_Parser');
+});
+
+
+
+
+
+
+
+Route::get('/SimpleXML_Get Node_Attribute_Values', function () {
+    return view('SimpleXML_Get Node_Attribute_Values');
+});
+
+
+
+
+
+
+
+Route::get('/PHP_XML_Expat_Parser', function () {
+    return view('PHP_XML_Expat_Parser');
+});
+
 
 
 
