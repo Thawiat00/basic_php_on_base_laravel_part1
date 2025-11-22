@@ -1920,4 +1920,186 @@ finally - โค้ดที่รันไม่ว่าจะเกิด Err
 
 -------------
 
-part 7 :
+part 7 :  PHP OOP 
+
+clude สอนให้
+
+ตัว A
+https://claude.ai/chat/a4fa9327-49f9-4017-a927-b1cf39ab585a
+
+
+
+
+สรุปเนื้อหา PHP OOP จากไฟล์ php_part7.txt
+ไฟล์นี้เป็น คู่มือการเขียนโปรแกรม PHP แบบ Object-Oriented Programming (OOP) ครอบคลุม 8 หัวข้อหลัก มาดูรายละเอียดแต่ละข้อพร้อมตัวอย่างที่สมบูรณ์กันเลย
+
+ข้อ 1: Classes and Objects (คลาสและออบเจ็กต์)
+แนวคิด
+
+Class = แม่แบบสำหรับสร้างออบเจ็กต์ (เหมือนพิมพ์เขียว)
+Object = ตัวอย่างที่สร้างจากคลาส (เหมือนบ้านที่สร้างจากพิมพ์เขียว)
+Properties = ตัวแปรภายในคลาส
+Methods = ฟังก์ชันภายในคลาส
+$this = อ้างอิงถึงออบเจ็กต์ปัจจุบัน
+
+ตัวอย่างสมบูรณ์ข้อ 1: PHP Classes and ObjectsCode <?php
+// ===============================
+// ข้อ 1: PHP OOP - Classes and Objects
+// ===============================
+
+// การประกาศคลาส
+class Fruit {
+    // Properties (คุณสมบัติ)
+    public $name;
+    public $color;
+    public $weight;
+    
+    // Met
+ข้อ 2: Constructor (__construct)
+แนวคิด
+
+Constructor = เมธอดพิเศษที่ทำงานอัตโนมัติเมื่อสร้างออบเจ็กต์
+ใช้ __construct() (ขีดล่าง 2 ตัว)
+ช่วยกำหนดค่าเริ่มต้นให้กับ properties
+ทำให้โค้ดสั้นลงและอ่านง่ายขึ้น
+
+ตัวอย่างสมบูรณ์ข้อ 2: PHP ConstructorCode <?php
+// ===============================
+// ข้อ 2: PHP OOP - Constructor
+// ===============================
+
+// คลาสที่ใช้ Constructor
+class Product {
+    public $name;
+    public $price;
+    public $category;
+    public $stock;
+    
+    // Construct
+ข้อ 3: Destructor (__destruct)
+แนวคิด
+
+Destructor = เมธอดที่ทำงานอัตโนมัติเมื่อออบเจ็กต์ถูกทำลายหรือสคริปต์จบ
+ใช้ __destruct() (ขีดล่าง 2 ตัว)
+ใช้สำหรับทำความสะอาด เช่น ปิดการเชื่อมต่อฐานข้อมูล ลบไฟล์ชั่วคราว
+
+ตัวอย่างสมบูรณ์ข้อ 3: PHP DestructorCode <?php
+// ===============================
+// ข้อ 3: PHP OOP - Destructor
+// ===============================
+
+// ตัวอย่างที่ 1: Logger Class (บันทึกข้อมูล)
+class Logger {
+    public $name;
+    public $log_count;
+    private $start_time;
+    
+    // Con
+ข้อ 4: Access Modifiers (ตัวกำหนดการเข้าถึง)
+แนวคิด
+
+public = เข้าถึงได้จากทุกที่
+protected = เข้าถึงได้ภายในคลาสและคลาสลูกเท่านั้น
+private = เข้าถึงได้ภายในคลาสเดียวกันเท่านั้น
+
+ตัวอย่างสมบูรณ์ข้อ 4: PHP Access ModifiersCode <?php
+// ===============================
+// ข้อ 4: PHP OOP - Access Modifiers
+// ===============================
+
+// คลาสหลัก: BankAccount
+class BankAccount {
+    // Properties ต่าง ๆ
+    public $account_number;      // เข้าถึงได้ทุกที่
+    protected
+ข้อ 5: Inheritance (การสืบทอด)
+แนวคิด
+
+คลาสลูกสืบทอดคุณสมบัติจากคลาสแม่ด้วยคำสั่ง extends
+สืบทอดได้เฉพาะ public และ protected (ไม่ได้ private)
+สามารถ Override (เขียนทับ) methods ได้
+ใช้ final เพื่อป้องกันการสืบทอดหรือ override
+
+ตัวอย่างสมบูรณ์ข้อ 5: PHP InheritanceCode <?php
+// ===============================
+// ข้อ 5: PHP OOP - Inheritance
+// ===============================
+
+// คลาสแม่: Vehicle (ยานพาหนะ)
+class Vehicle {
+    public $brand;
+    public $model;
+    public $year;
+    protected $speed;
+    private $eng
+ข้อ 6: Class Constants (ค่าคงที่ในคลาส)
+แนวคิด
+
+ใช้ const เพื่อประกาศค่าคงที่
+เข้าถึงด้วย :: (Scope Resolution Operator)
+จากภายนอก: ClassName::CONSTANT
+จากภายใน: self::CONSTANT
+ไม่สามารถเปลี่ยนแปลงค่าได้
+
+ตัวอย่างสมบูรณ์ข้อ 6: PHP Class ConstantsCode <?php
+// ===============================
+// ข้อ 6: PHP OOP - Class Constants
+// ===============================
+
+// ตัวอย่างที่ 1: Configuration Class
+class Config {
+    // ค่าคงที่สำหรับการตั้งค่าระบบ
+    const APP_NAME = "ระบบจัดการร้านค้า";
+    co
+ข้อ 7: Abstract Classes (คลาสนามธรรม)
+แนวคิด
+
+ไม่สามารถสร้างออบเจ็กต์โดยตรงได้
+ใช้เป็นแม่แบบให้คลาสลูกสืบทอด
+มี abstract methods ที่คลาสลูกต้องเขียนเอง
+บังคับให้คลาสลูกมีโครงสร้างเหมือนกัน
+
+ตัวอย่างสมบูรณ์ข้อ 7: PHP Abstract ClassesCode <?php
+// ===============================
+// ข้อ 7: PHP OOP - Abstract Classes
+// ===============================
+
+// ตัวอย่างที่ 1: Payment Gateway (ระบบชำระเงิน)
+abstract class PaymentGateway {
+    protected $amount;
+    protected $currency;
+    pro
+ข้อ 8: Interfaces (อินเทอร์เฟซ)
+แนวคิด
+
+กำหนดโครงสร้าง methods ที่คลาสต้องมี
+เหมือน "สัญญา" ที่คลาสต้องปฏิบัติตาม
+ไม่มี properties และ implementation
+คลาสหนึ่งสามารถ implement หลาย interfaces ได้
+ต่างจาก abstract class ตรงที่ไม่มี properties และ methods ต้องเป็น public ทั้งหมด
+
+ตัวอย่างสมบูรณ์ข้อ 8: PHP InterfacesCode <?php
+// ===============================
+// ข้อ 8: PHP OOP - Interfaces
+// ===============================
+
+// ตัวอย่างที่ 1: Animal Interface (เสียงของสัตว์)
+interface Animal {
+    public function make_sound();
+    public function move();
+}
+
+class D
+สรุปทั้ง 8 ข้อ
+ตอนนี้คุณมีตัวอย่างโค้ด PHP OOP ครบทั้ง 8 ข้อแล้ว โดยแต่ละไฟล์เป็น standalone (ใช้งานได้เลยโดยไม่ต้องอาศัยไฟล์อื่น) และมีความสมบูรณ์:
+ข้อหัวข้อแนวคิดหลัก1Classes & Objectsคลาส = แม่แบบ, ออบเจ็กต์ = ตัวอย่าง, $this2Constructor__construct() - กำหนดค่าอัตโนมัติตอนสร้างออบเจ็กต์3Destructor__destruct() - ทำงานอัตโนมัติตอนทำลายออบเจ็กต์4Access Modifierspublic, protected, private - ควบคุมการเข้าถึง5Inheritanceextends - สืบทอดคุณสมบัติจากคลาสแม่6Class Constantsconst - ค่าคงที่ที่ไม่เปลี่ยนแปลง7Abstract Classesแม่แบบที่มี abstract methods บังคับให้คลาสลูกเขียน8Interfacesสัญญากำหนดโครงสร้าง methods, implement ได้หลายตัว
+จุดเด่นของตัวอย่าง:
+✅ โค้ดสมบูรณ์ - รันได้เลยไม่ต้องแก้ไข
+✅ มี Comment ภาษาไทย - อธิบายทุกขั้นตอน
+✅ ตัวอย่างหลากหลาย - ครอบคลุมทุกกรณีการใช้งาน
+✅ Real-world scenarios - ใช้สถานการณ์จริง เช่น ร้านค้า, ธนาคาร, ชำระเงิน
+✅ มีตารางสรุป - เปรียบเทียบและสรุปท้ายทุกข้อ
+
+---------------
+
+part8 :  

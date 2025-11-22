@@ -406,3 +406,59 @@ Route::get('/PHP_Validate_Name_E_mailand_URL', function () {
     return view('PHP_Validate_Name_E_mailand_URL');
 });
 
+
+
+Route::get('/PHP_Classes_and_Objects', function () {
+    return view('PHP_Classes_and_Objects');
+});
+
+
+
+
+Route::get('/PHP_Constructor', function () {
+    return view('PHP_Constructor');
+});
+
+
+
+
+Route::get('/PHP_Destructor', function () {
+    return view('PHP_Destructor');
+});
+
+
+
+
+
+Route::get('/PHP_Access_Modifiers', function () {
+    return view('PHP_Access_Modifiers');
+});
+
+
+
+
+Route::get('/PHP_Inheritance', function () {
+    return view('PHP_Inheritance');
+});
+
+
+
+
+Route::get('/PHP_Class_Constants', function () {
+    return view('PHP_Class_Constants');
+});
+
+
+
+
+Route::get('/PHP_Abstract_Classes', function () {
+    return view('PHP_Abstract_Classes');
+});
+
+
+
+
+
+Route::get('/PHP_Interfaces', function () {
+    return view('PHP_Interfaces');
+});
