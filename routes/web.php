@@ -499,3 +499,232 @@ Route::get('/PHP_Iterables', function () {
     return view('PHP_Iterables');
 });
 
+
+
+
+
+Route::get('/PHP_connect_mysql', function () {
+    return view('PHP_connect_mysql');
+});
+
+
+
+Route::get('/PHP_connect_mysql_demo', function () {
+    return view('PHP_connect_mysql_demo');
+});
+
+
+
+
+Route::get('/PHP_CREATE_DATABASE', function () {
+    return view('PHP_CREATE_DATABASE');
+});
+
+
+
+
+Route::get('/PHP_CREATE_DATABASE_demo', function () {
+    return view('PHP_CREATE_DATABASE_demo');
+});
+
+
+
+
+
+Route::get('/CREATE_TABLE', function () {
+    return view('CREATE_TABLE');
+});
+
+
+
+
+
+
+Route::get('/CREATE_TABLE_demo', function () {
+    return view('CREATE_TABLE_demo');
+});
+
+
+
+
+
+Route::get('/PHP_INSERT_Data_Table', function () {
+    return view('PHP_INSERT_Data_Table');
+});
+
+
+
+
+
+
+Route::get('/PHP_INSERT_Data_Table', function () {
+    return view('PHP_INSERT_Data_Table');
+});
+
+
+
+
+
+
+Route::get('/PHP_INSERT_Data_Table_demo', function () {
+    return view('PHP_INSERT_Data_Table_demo');
+});
+
+
+
+
+Route::get('/PHP_Get_last_id_table', function () {
+    return view('PHP_Get_last_id_table');
+});
+
+
+
+
+Route::get('/PHP_Get_last_id_table_demo', function () {
+    return view('PHP_Get_last_id_table_demo');
+});
+
+
+
+
+
+Route::get('/PHP_multi_query', function () {
+    return view('PHP_multi_query');
+});
+
+
+
+Route::get('/PHP_multi_query_demo', function () {
+    return view('PHP_multi_query_demo');
+});
+
+
+Route::get('/PHP_Prepared_Statements', function () {
+    return view('PHP_Prepared_Statements');
+});
+
+
+
+
+
+
+
+Route::get('/PHP_Prepared_Statements_demo', function () {
+    return view('PHP_Prepared_Statements_demo');
+});
+
+
+
+
+
+
+Route::get('/PHP_Select_table', function () {
+    return view('PHP_Select_table');
+});
+
+
+
+Route::get('/PHP_Select_table_demo', function () {
+    return view('PHP_Select_table_demo');
+});
+
+
+
+
+
+
+
+
+Route::get('/PHP_MySQL_WHERE_Clause', function () {
+    return view('PHP_MySQL_WHERE_Clause');
+});
+
+
+
+
+Route::get('/PHP_MySQL_WHERE_Clause_demo', function () {
+    return view('PHP_MySQL_WHERE_Clause_demo');
+});
+
+
+
+
+
+
+
+Route::get('/PHP_MySQL_ORDER_BY_Clause', function () {
+    return view('PHP_MySQL_ORDER_BY_Clause');
+});
+
+
+
+
+Route::get('/PHP_MySQL_ORDER_BY_Clause_demo', function () {
+    return view('PHP_MySQL_ORDER_BY_Clause_demo');
+});
+
+
+
+
+
+
+
+
+
+Route::get('/PHP_MySQL_DELETE_Data', function () {
+    return view('PHP_MySQL_DELETE_Data');
+});
+
+
+
+
+
+
+Route::get('/PHP_MySQL_DELETE_Data_demo', function () {
+    return view('PHP_MySQL_DELETE_Data_demo');
+});
+
+
+
+
+
+
+
+
+Route::get('/PHP_MySQL_UPDATE_Data', function () {
+    return view('PHP_MySQL_UPDATE_Data');
+});
+
+
+
+
+
+Route::get('/PHP_MySQL_UPDATE_Data_demo', function () {
+    return view('PHP_MySQL_UPDATE_Data_demo');
+});
+
+
+
+
+
+
+
+
+Route::get('/PHP_MySQL_LIMIT_Data', function () {
+    return view('PHP_MySQL_LIMIT_Data');
+});
+
+
+
+
+
+
+
+
+
+Route::get('/PHP_MySQL_LIMIT_Data_demo', function () {
+    return view('PHP_MySQL_LIMIT_Data_demo');
+});
+
+
+
