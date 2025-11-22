@@ -462,3 +462,40 @@ Route::get('/PHP_Abstract_Classes', function () {
 Route::get('/PHP_Interfaces', function () {
     return view('PHP_Interfaces');
 });
+
+
+
+
+
+Route::get('/PHP_Traits', function () {
+    return view('PHP_Traits');
+});
+
+
+
+
+Route::get('/PHP_Static_Methods', function () {
+    return view('PHP_Static_Methods');
+});
+
+
+
+
+
+Route::get('/PHP_Static_Properties', function () {
+    return view('PHP_Static_Properties');
+});
+
+
+
+Route::get('/PHP_Namespaces', function () {
+    return view('PHP_Namespaces');
+});
+
+
+
+
+Route::get('/PHP_Iterables', function () {
+    return view('PHP_Iterables');
+});
+
